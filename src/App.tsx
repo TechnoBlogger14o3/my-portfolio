@@ -50,66 +50,127 @@ const App: React.FC = () => {
     { icon: FaStackOverflow as React.ComponentType<{ className?: string }>, url: 'https://stackoverflow.com/users/3469691/aman-shekhar', label: 'Stack Overflow' },
     { icon: FaYoutube as React.ComponentType<{ className?: string }>, url: 'https://www.youtube.com/@technoBlogger14o3/playlists', label: 'YouTube' },
     { icon: FaMedium as React.ComponentType<{ className?: string }>, url: 'https://shekhar14.medium.com/', label: 'Medium' },
-    { icon: SiAmazon as React.ComponentType<{ className?: string }>, url: 'https://www.amazon.in/dp/B0CK628QCB', label: 'Amazon Book' },
+    { icon: SiAmazon as React.ComponentType<{ className?: string }>, url: 'https://www.amazon.in/dp/B0DK258DF5?binding=kindle_edition&ref=dbs_dp_rwt_sb_pc_tkin', label: 'Amazon Books' },
     { icon: SiNotion as React.ComponentType<{ className?: string }>, url: 'https://notionpress.com/author/867', label: 'Notion Press' },
     { icon: FaChess as React.ComponentType<{ className?: string }>, url: 'https://topmate.io/aman_shekhar', label: 'Topmate' },
   ];
 
   const skills = [
     {
-      category: 'Mobile Development',
+      category: 'Platforms',
       icon: FaMobile as React.ComponentType<{ className?: string }>,
-      items: ['Kotlin', 'Swift', 'Java', 'Android SDK', 'SwiftUI', 'Jetpack Compose', 'React Native']
+      items: ['Android', 'iOS', 'Web']
     },
     {
-      category: 'Frontend & Backend',
+      category: 'Languages & Frameworks',
       icon: FaCode as React.ComponentType<{ className?: string }>,
-      items: ['TypeScript', 'JavaScript', 'Python', 'Node.js', 'Spring Boot', 'React']
+      items: ['Java', 'Kotlin', 'SwiftUI', 'React-Native', 'React JS', 'Redux', 'Javascript', 'Typescript']
     },
     {
-      category: 'Cloud & DevOps',
+      category: 'Tools & Technologies',
       icon: FaCloud as React.ComponentType<{ className?: string }>,
-      items: ['AWS (S3, Lambda, EC2, CloudWatch)', 'Firebase', 'GitHub Actions', 'Docker', 'AWS Amplify']
+      items: ['Git/GitHub/Bitbucket', 'Android Studio', 'XCode', 'VS Code', 'Jira', 'Figma', 'Zeplin']
     },
     {
-      category: 'Databases & APIs',
+      category: 'Others',
       icon: FaDatabase as React.ComponentType<{ className?: string }>,
-      items: ['Firebase Realtime DB', 'Firestore', 'REST APIs', 'GraphQL', 'CoreData', 'Realm']
+      items: ['App Performance', 'Agile Methodology', 'Scrum', 'Firebase', 'Tailwind', 'Bootstrap']
     }
   ];
 
   const experiences = [
     {
-      title: 'Mobile App Developer',
-      company: 'Professional Experience',
-      period: 'Current',
-      description: 'Specialized in Android and iOS development with expertise in modern frameworks and architectures.',
-      technologies: ['Kotlin', 'Swift', 'Jetpack Compose', 'SwiftUI', 'MVVM', 'Clean Architecture']
+      title: 'FullStack Engineer (Android, iOS, React-Native)',
+      company: 'Boeing',
+      location: 'Bengaluru',
+      period: 'June 2024 - Present',
+      description: 'Responsible for Mobile and Web app development using React JS, Node JS, React-Native, TypeScript',
+      technologies: ['React JS', 'Node JS', 'React-Native', 'TypeScript']
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Freelance & Projects',
-      period: 'Ongoing',
-      description: 'Building end-to-end solutions with cloud integration and modern web technologies.',
-      technologies: ['React Native', 'Node.js', 'AWS', 'Firebase', 'TypeScript']
+      title: 'Lead Engineer (Android, iOS, React-Native)',
+      company: 'Bluesheets',
+      location: 'Singapore',
+      period: 'Feb 2023 - May 2024',
+      description: 'Improved Core Architecture and App performance by 25%. Built Offline support feature and increased App Stability by 20%. Reduced APK from 21 MB to 9.8 MB.',
+      technologies: ['Android', 'iOS', 'React-Native', 'Performance Optimization', 'Modular Architecture']
+    },
+    {
+      title: 'Lead Engineer (Android, iOS, React-Native)',
+      company: 'Dhani',
+      location: 'Gurugram',
+      period: 'Oct 2021 - Feb 2023',
+      description: 'Spearheaded UI Library development, built features increasing user engagement by 20%. Complete app revamp using MVVM with Clean Architecture. Achieved 99.97% crash-free session rate.',
+      technologies: ['Kotlin', 'MVVM', 'Clean Architecture', 'Memory Optimization', 'UI Library']
+    },
+    {
+      title: 'Lead Engineer (Android, iOS, React-Native)',
+      company: 'Freecharge',
+      location: 'Gurugram',
+      period: 'Jul 2020 - Sep 2021',
+      description: 'Developed features end-to-end, created React-Native plugins, implemented RSA/AES encryption and Fingerprint authentication for secure payments.',
+      technologies: ['React-Native', 'RSA/AES Encryption', 'Fingerprint Authentication', 'Payment Security']
+    },
+    {
+      title: 'Senior Software Engineer (Android)',
+      company: 'Photon Infotech',
+      location: 'Bengaluru',
+      period: 'Oct 2017 - Jun 2020',
+      description: 'Worked on Health Sector apps (Sentara and Optima), optimized code, revamped to MVVM architecture, created high-quality optimized products.',
+      technologies: ['Android', 'MVVM', 'Health Apps', 'Code Optimization']
+    },
+    {
+      title: 'Software Engineer (Android)',
+      company: 'eSecForte Technology',
+      location: 'Bengaluru',
+      period: 'June 2014 - Sep 2017',
+      description: 'Developed various apps including ANI News, Fingertips Education app, and Essential Newborn Care APP.',
+      technologies: ['Android', 'News Apps', 'Education Apps', 'Healthcare Apps']
     }
   ];
 
-  const projects = [
+  const majorProjects = [
     {
-      title: 'Mobile Applications',
-      description: 'Developed multiple mobile apps using Kotlin, Swift, and React Native with modern architectures.',
-      tech: ['Kotlin', 'Swift', 'React Native', 'Firebase']
+      title: 'Bluesheets',
+      description: 'Contributed to designing comprehensive front-end architecture and collaborated with project management teams to incorporate new requirements.',
+      tech: ['React-Native', 'Frontend Architecture', 'Project Management'],
+      appStore: 'https://apps.apple.com/in/app/bluesheets/id1634779626/',
+      playStore: 'https://play.google.com/store/apps/details?id=com.bluesheets&pli=1'
     },
     {
-      title: 'Cloud Solutions',
-      description: 'Implemented cloud-based solutions using AWS services and Firebase for scalable applications.',
-      tech: ['AWS', 'Firebase', 'Lambda', 'S3']
+      title: 'Dhani',
+      description: 'Led development of features that increased user engagement by 20%. Addressed memory optimization issues and improved app stability.',
+      tech: ['Kotlin', 'MVVM', 'Memory Optimization', 'User Engagement'],
+      appStore: 'https://apps.apple.com/in/app/dhani-online-shopping-app/id1273192455',
+      playStore: 'https://play.google.com/store/apps/details?id=com.indiaBulls'
     },
     {
-      title: 'Chess & Tech Blog',
-      description: 'Author of technical content and chess strategy, published on Medium and Amazon.',
-      tech: ['Content Creation', 'Technical Writing', 'Chess Strategy']
+      title: 'Freecharge Business',
+      description: 'Improved application performance through optimization techniques and played a key role in overseeing React-Native module flow.',
+      tech: ['React-Native', 'Performance Optimization', 'Payment Integration'],
+      appStore: 'https://apps.apple.com/us/app/freecharge-upi-credit-cards/id877495926',
+      playStore: 'https://play.google.com/store/apps/details?id=com.freecharge.android'
+    },
+    {
+      title: 'Sentara Healthcare',
+      description: 'Successfully integrated Video Calling Feature and actively engaged in scrum meetings for effective project management.',
+      tech: ['Android', 'Video Calling', 'Healthcare', 'Scrum'],
+      playStore: 'https://play.google.com/store/apps/details?id=com.sentara.android'
+    }
+  ];
+
+  const otherProjects = [
+    {
+      title: 'ANI News',
+      description: 'Integral to the inception and development of this project, contributing to its creation from the ground up.',
+      tech: ['Android', 'News App', 'Content Management'],
+      playStore: 'https://play.google.com/store/apps/details?id=com.ani.news'
+    },
+    {
+      title: 'Fingertips',
+      description: 'Played a pivotal role in the conception and development of the Fingertips project, actively contributing to its creation from the very beginning.',
+      tech: ['Android', 'Education App', 'Student Portal'],
+      playStore: 'https://play.google.com/store/apps/details?id=com.fingertips'
     }
   ];
 
@@ -158,14 +219,14 @@ const App: React.FC = () => {
             </h1>
             <h2 className="hero-subtitle">
               <TypewriterText 
-                text="Mobile App Developer & Tech Enthusiast" 
+                text="Lead Engineer with 11+ Years of Experience" 
                 speed={80}
                 delay={1000}
               />
             </h2>
             <p className="hero-description">
-              Weaving technology, chess, and the written word into innovative mobile experiences. 
-              Passionate about creating elegant solutions that bridge the digital and human worlds.
+              Lead Engineer with 11+ years of experience in Mobile App Development. 
+              Specialized in Android, iOS, and React-Native with expertise in performance optimization and modern architectures.
             </p>
             <div className="hero-buttons">
               <motion.button
@@ -220,7 +281,7 @@ const App: React.FC = () => {
             className="section-header"
           >
             <h2>About Me</h2>
-            <p>My journey through technology, chess, and writing</p>
+            <p>Lead Engineer with 11+ years of experience in Mobile App Development</p>
           </motion.div>
           
           <div className="about-content">
@@ -232,19 +293,34 @@ const App: React.FC = () => {
               className="about-text"
             >
               <p>
-                My life story weaves a rich tapestry from the intricate threads of technology, chess, and the written word. 
-                As a Mobile App Developer, I specialize in creating seamless user experiences across Android and iOS platforms.
+                I am a Lead Engineer with 11+ years of experience in Mobile App Development, specializing in Android, iOS, and React-Native. 
+                Throughout my career, I've worked with companies like Boeing, Bluesheets, Dhani, and Freecharge, delivering high-quality mobile applications.
               </p>
               <p>
-                When I'm not coding, you'll find me strategizing on the chessboard or crafting technical content that bridges 
-                the gap between complex concepts and practical implementation.
+                My expertise includes performance optimization, architecture design, and building scalable mobile solutions. 
+                I've successfully improved app performance by 25%, reduced APK sizes, and achieved 99.97% crash-free session rates.
               </p>
               <div className="current-goals">
-                <h3>Current Goals</h3>
+                <h3>Key Achievements</h3>
                 <ul>
-                  <li>Complete AWS certification and master System Design</li>
-                  <li>Achieve a FIDE chess rating</li>
-                  <li>Publish a comprehensive chess + tech blog series</li>
+                  <li>Improved Core Architecture and App performance by 25%</li>
+                  <li>Reduced APK size from 21 MB to 9.8 MB</li>
+                  <li>Achieved 99.97% crash-free session rate</li>
+                  <li>Built features increasing user engagement by 20%</li>
+                </ul>
+              </div>
+              <div className="education">
+                <h3>Education</h3>
+                <p><strong>Master of Computer Application</strong> - Greater Noida Institute of Technology (2011 - 2014)</p>
+                <p><strong>Bachelor of Arts</strong> - Nalanda Open University (2007 - 2011)</p>
+              </div>
+              <div className="extra-activities">
+                <h3>Extra-Curricular Activities</h3>
+                <ul>
+                  <li>Actively write technical blog posts on <a href="https://shekhar14.medium.com" target="_blank" rel="noopener noreferrer">Medium</a> and contribute to <a href="https://github.com/TechnoBlogger14o3" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                  <li>Author of "The Manas Saga: Mysteries of the Ancients" trilogy - <a href="https://www.amazon.in/dp/B0CK628QCB" target="_blank" rel="noopener noreferrer">Book 1</a> and <a href="https://www.amazon.in/Manas-Quest-Karans-Mysteries-Ancients-ebook/dp/B0DJYK83DD" target="_blank" rel="noopener noreferrer">Book 2</a> available on Amazon</li>
+                  <li>Consistently contribute to problem-solving challenges on <a href="https://www.hackerrank.com/profile/Shekhar14/" target="_blank" rel="noopener noreferrer">HackerRank</a> and <a href="https://leetcode.com/AmanShekhar/" target="_blank" rel="noopener noreferrer">LeetCode</a></li>
+                  <li>Share solutions and tutorials on my <a href="https://www.youtube.com/@technoBlogger14o3" target="_blank" rel="noopener noreferrer">YouTube channel</a></li>
                 </ul>
               </div>
             </motion.div>
@@ -259,26 +335,26 @@ const App: React.FC = () => {
               <div className="stat-card">
                 {/* @ts-ignore */}
                 <FaCode className="stat-icon" />
-                <h3>5+</h3>
-                <p>Programming Languages</p>
+                <h3>11+</h3>
+                <p>Years Experience</p>
               </div>
               <div className="stat-card">
                 {/* @ts-ignore */}
                 <FaMobile className="stat-icon" />
-                <h3>3+</h3>
-                <p>Mobile Frameworks</p>
+                <h3>15+</h3>
+                <p>Mobile Apps</p>
               </div>
               <div className="stat-card">
                 {/* @ts-ignore */}
                 <FaCloud className="stat-icon" />
-                <h3>2+</h3>
-                <p>Cloud Platforms</p>
+                <h3>6</h3>
+                <p>Companies</p>
               </div>
               <div className="stat-card">
                 {/* @ts-ignore */}
                 <FaBook className="stat-icon" />
-                <h3>1</h3>
-                <p>Published Book</p>
+                <h3>2</h3>
+                <p>Published Books</p>
               </div>
             </motion.div>
           </div>
@@ -350,7 +426,7 @@ const App: React.FC = () => {
               >
                 <div className="experience-content">
                   <h3>{exp.title}</h3>
-                  <h4>{exp.company}</h4>
+                  <h4>{exp.company} • {exp.location}</h4>
                   <span className="period">{exp.period}</span>
                   <p>{exp.description}</p>
                   <div className="tech-stack">
@@ -380,7 +456,7 @@ const App: React.FC = () => {
           </motion.div>
           
           <div className="projects-grid">
-            {projects.map((project, index) => (
+            {majorProjects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -395,6 +471,43 @@ const App: React.FC = () => {
                   {project.tech.map((tech) => (
                     <span key={tech} className="tech-tag">{tech}</span>
                   ))}
+                </div>
+                <div className="app-store-links">
+                  {project.appStore && (
+                    <a href={project.appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      📱 App Store
+                    </a>
+                  )}
+                  {project.playStore && (
+                    <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      📱 Play Store
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+            {otherProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
+                viewport={{ once: true }}
+                className="project-card"
+              >
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="project-tech">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                <div className="app-store-links">
+                  {project.playStore && (
+                    <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      📱 Play Store
+                    </a>
+                  )}
                 </div>
               </motion.div>
             ))}
