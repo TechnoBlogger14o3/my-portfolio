@@ -5,6 +5,8 @@ import { SiLeetcode, SiAmazon, SiNotion } from 'react-icons/si';
 import Simple3DBackground from './components/Simple3DBackground';
 import MouseTrail from './components/MouseTrail';
 import TypewriterText from './components/TypewriterText';
+import ScrollProgress from './components/ScrollProgress';
+import AnimatedCounter from './components/AnimatedCounter';
 import './App.css';
 
 
@@ -18,7 +20,7 @@ const App: React.FC = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+      const sections = ['home', 'about', 'skills', 'experience', 'projects', 'tutorials', 'contact'];
       const scrollPosition = window.scrollY + 100;
       
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -40,6 +42,25 @@ const App: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
     }
+  };
+
+  const createRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const button = event.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add('ripple');
+
+    const ripple = button.getElementsByClassName('ripple')[0];
+    if (ripple) {
+      ripple.remove();
+    }
+
+    button.appendChild(circle);
   };
 
   const socialLinks = [
@@ -174,8 +195,40 @@ const App: React.FC = () => {
     }
   ];
 
+  const tutorials = [
+    {
+      title: 'React Native Tutorial',
+      description: 'Comprehensive guide to building cross-platform mobile applications with React Native. Learn from basics to advanced concepts.',
+      tech: ['React Native', 'JavaScript', 'Mobile Development'],
+      githubUrl: 'https://github.com/TechnoBlogger14o3/react-native-tutorials',
+      icon: FaMobile as React.ComponentType<{ className?: string }>
+    },
+    {
+      title: 'React Web Tutorial',
+      description: 'Complete tutorial series on building modern web applications with React. Covers hooks, routing, state management, and more.',
+      tech: ['React', 'JavaScript', 'Web Development'],
+      githubUrl: 'https://github.com/TechnoBlogger14o3/react-web-tutorials',
+      icon: FaCode as React.ComponentType<{ className?: string }>
+    },
+    {
+      title: 'React Three Fiber Tutorial',
+      description: 'Learn 3D graphics and interactive experiences in React using React Three Fiber. Build stunning 3D web applications.',
+      tech: ['React Three Fiber', 'Three.js', '3D Graphics'],
+      githubUrl: 'https://github.com/TechnoBlogger14o3/react-three-fiber-tutorials',
+      icon: FaCloud as React.ComponentType<{ className?: string }>
+    },
+    {
+      title: 'Python Tutorial',
+      description: 'Master Python programming from fundamentals to advanced topics. Includes data structures, algorithms, and best practices.',
+      tech: ['Python', 'Programming', 'Algorithms'],
+      githubUrl: 'https://github.com/TechnoBlogger14o3/python-tutorial',
+      icon: FaDatabase as React.ComponentType<{ className?: string }>
+    }
+  ];
+
   return (
     <div className="App">
+      <ScrollProgress />
       <MouseTrail />
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -191,7 +244,7 @@ const App: React.FC = () => {
             <span>Aman Shekhar</span>
           </div>
           <div className="nav-links">
-            {['home', 'about', 'skills', 'experience', 'projects', 'contact'].map((section) => (
+            {['home', 'about', 'skills', 'experience', 'projects', 'tutorials', 'contact'].map((section) => (
               <button
                 key={section}
                 className={`nav-link ${activeSection === section ? 'active' : ''}`}
@@ -230,18 +283,24 @@ const App: React.FC = () => {
             </p>
             <div className="hero-buttons">
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 215, 0, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-primary"
-                onClick={() => scrollToSection('contact')}
+                className="btn-primary ripple-button"
+                onClick={(e) => {
+                  createRipple(e);
+                  scrollToSection('contact');
+                }}
               >
                 Get In Touch
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 255, 255, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-secondary"
-                onClick={() => scrollToSection('projects')}
+                className="btn-secondary ripple-button"
+                onClick={(e) => {
+                  createRipple(e);
+                  scrollToSection('projects');
+                }}
               >
                 View Projects
               </motion.button>
@@ -332,30 +391,46 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               className="about-stats"
             >
-              <div className="stat-card">
+              <motion.div 
+                className="stat-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 {/* @ts-ignore */}
                 <FaCode className="stat-icon" />
-                <h3>11+</h3>
+                <h3><AnimatedCounter value={11} suffix="+" /></h3>
                 <p>Years Experience</p>
-              </div>
-              <div className="stat-card">
+              </motion.div>
+              <motion.div 
+                className="stat-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 {/* @ts-ignore */}
                 <FaMobile className="stat-icon" />
-                <h3>15+</h3>
+                <h3><AnimatedCounter value={15} suffix="+" /></h3>
                 <p>Mobile Apps</p>
-              </div>
-              <div className="stat-card">
+              </motion.div>
+              <motion.div 
+                className="stat-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 {/* @ts-ignore */}
                 <FaCloud className="stat-icon" />
-                <h3>6</h3>
+                <h3><AnimatedCounter value={6} /></h3>
                 <p>Companies</p>
-              </div>
-              <div className="stat-card">
+              </motion.div>
+              <motion.div 
+                className="stat-card"
+                whileHover={{ scale: 1.05, y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
                 {/* @ts-ignore */}
                 <FaBook className="stat-icon" />
-                <h3>2</h3>
+                <h3><AnimatedCounter value={2} /></h3>
                 <p>Published Books</p>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
@@ -381,9 +456,15 @@ const App: React.FC = () => {
                 key={skill.category}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ 
+                  scale: 1.05, 
+                  y: -8,
+                  rotateY: 5,
+                  transition: { duration: 0.3 }
+                }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="skill-category"
+                className="skill-category interactive-skill-card"
               >
                 <div className="skill-header">
                   <skill.icon className="skill-icon" />
@@ -461,9 +542,14 @@ const App: React.FC = () => {
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ 
+                  scale: 1.03, 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className="project-card"
+                className="project-card interactive-card"
               >
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -491,9 +577,14 @@ const App: React.FC = () => {
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ 
+                  scale: 1.03, 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
                 viewport={{ once: true }}
-                className="project-card"
+                className="project-card interactive-card"
               >
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
@@ -509,6 +600,56 @@ const App: React.FC = () => {
                     </a>
                   )}
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tutorials Section */}
+      <section id="tutorials" className="section">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="section-header"
+          >
+            <h2>Tutorials & Learning Resources</h2>
+            <p>Comprehensive tutorials I've created to help developers learn and grow</p>
+          </motion.div>
+          
+          <div className="tutorials-grid">
+            {tutorials.map((tutorial, index) => (
+              <motion.div
+                key={tutorial.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                viewport={{ once: true }}
+                className="tutorial-card"
+              >
+                <div className="tutorial-header">
+                  <tutorial.icon className="tutorial-icon" />
+                  <h3>{tutorial.title}</h3>
+                </div>
+                <p>{tutorial.description}</p>
+                <div className="tutorial-tech">
+                  {tutorial.tech.map((tech) => (
+                    <span key={tech} className="tech-tag">{tech}</span>
+                  ))}
+                </div>
+                <a 
+                  href={tutorial.githubUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="tutorial-link"
+                >
+                  {/* @ts-ignore */}
+                  <FaGithub className="github-icon" />
+                  <span>View on GitHub</span>
+                </a>
               </motion.div>
             ))}
           </div>

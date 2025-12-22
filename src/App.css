@@ -176,6 +176,8 @@ body {
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
@@ -186,6 +188,28 @@ body {
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+/* Ripple Effect */
+.ripple-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  transform: scale(0);
+  animation: ripple-animation 600ms ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 .btn-secondary {
@@ -236,10 +260,30 @@ body {
 .section {
   padding: 100px 0;
   background: white;
+  position: relative;
+  transition: transform 0.1s ease-out;
 }
 
 .section:nth-child(even) {
   background: #f8fafc;
+}
+
+/* Parallax effect for sections */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.02), rgba(118, 75, 162, 0.02));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.section:hover::before {
+  opacity: 1;
 }
 
 .section-header {
@@ -382,11 +426,30 @@ body {
   background: white;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.stat-card:hover::before {
+  left: 100%;
 }
 
 .stat-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
 }
 
 .stat-icon {
@@ -423,6 +486,12 @@ body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.interactive-skill-card {
+  transform-style: preserve-3d;
 }
 
 .skill-category::before {
@@ -639,6 +708,12 @@ body {
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+}
+
+.interactive-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
 .project-card::after {
@@ -660,6 +735,23 @@ body {
 .project-card:hover {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 15px;
+}
+
+.project-card:hover::before {
+  opacity: 1;
 }
 
 .project-card h3 {
@@ -716,6 +808,107 @@ body {
   font-size: 1rem;
 }
 
+/* Tutorials Section */
+.tutorials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.tutorial-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tutorial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.tutorial-card:hover::before {
+  transform: scaleX(1);
+}
+
+.tutorial-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+}
+
+.tutorial-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.tutorial-icon {
+  font-size: 2rem;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.tutorial-header h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.tutorial-card p {
+  color: #666;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.tutorial-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.tutorial-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-top: auto;
+  justify-content: center;
+}
+
+.tutorial-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+.github-icon {
+  font-size: 1.2rem;
+}
+
 /* Contact Section */
 .social-links {
   display: grid;
@@ -750,6 +943,101 @@ body {
 
 .social-link span {
   font-weight: 500;
+}
+
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #ffd700);
+  z-index: 10000;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.5);
+  transition: width 0.1s ease;
+}
+
+/* Enhanced Interactive Elements */
+.skill-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-item:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.tech-tag {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-tag:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #5a6fd8, #6a4190);
+}
+
+/* Parallax Effect for Hero */
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-text {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Enhanced Tutorial Cards */
+.tutorial-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tutorial-card:hover .tutorial-icon {
+  transform: rotate(360deg) scale(1.2);
+  transition: transform 0.6s ease;
+}
+
+.tutorial-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Smooth Scroll Enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced Social Links */
+.social-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.social-link:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 /* Footer */
@@ -816,6 +1104,10 @@ body {
   
   .app-store-links {
     flex-direction: column;
+  }
+  
+  .tutorials-grid {
+    grid-template-columns: 1fr;
   }
   
   .social-links {
