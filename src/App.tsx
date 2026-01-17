@@ -7,6 +7,8 @@ import MouseTrail from './components/MouseTrail';
 import TypewriterText from './components/TypewriterText';
 import ScrollProgress from './components/ScrollProgress';
 import AnimatedCounter from './components/AnimatedCounter';
+import TerminalWindow from './components/TerminalWindow';
+import SkillBar from './components/SkillBar';
 import './App.css';
 
 
@@ -99,6 +101,25 @@ const App: React.FC = () => {
     }
   ];
 
+  const skillBars = [
+    { skill: 'React Native', percentage: 95, color: '#61DAFB' },
+    { skill: 'React JS', percentage: 92, color: '#61DAFB' },
+    { skill: 'TypeScript', percentage: 90, color: '#3178C6' },
+    { skill: 'Kotlin', percentage: 88, color: '#7F52FF' },
+    { skill: 'Java', percentage: 85, color: '#ED8B00' },
+    { skill: 'SwiftUI', percentage: 80, color: '#FA7343' },
+    { skill: 'Node.js', percentage: 82, color: '#339933' },
+    { skill: 'Three.js / R3F', percentage: 75, color: '#000000' },
+  ];
+
+  const terminalCommands = [
+    'git status',
+    'npm install',
+    'npm start',
+    'Building portfolio...',
+    '✨ Portfolio ready!',
+  ];
+
   const experiences = [
     {
       title: 'FullStack Engineer (Android, iOS, React-Native)',
@@ -181,6 +202,13 @@ const App: React.FC = () => {
   ];
 
   const otherProjects = [
+    {
+      title: 'Dharmic Treasures',
+      description: 'A personal passion project exploring cultural and spiritual content. Built as a time-pass project to showcase modern web development skills.',
+      tech: ['React', 'Web Development', 'Personal Project'],
+      website: 'https://technoblogger14o3.github.io/dharmic-treasures/',
+      githubUrl: 'https://github.com/TechnoBlogger14o3/dharmic-treasures'
+    },
     {
       title: 'ANI News',
       description: 'Integral to the inception and development of this project, contributing to its creation from the ground up.',
@@ -278,8 +306,9 @@ const App: React.FC = () => {
               />
             </h2>
             <p className="hero-description">
-              Lead Engineer with 11+ years of experience in Mobile App Development. 
-              Specialized in Android, iOS, and React-Native with expertise in performance optimization and modern architectures.
+              Lead Engineer with 11+ years of experience delivering high-performance mobile applications. 
+              I help companies build scalable, efficient mobile solutions that drive business growth. 
+              Specialized in React Native, Android, iOS, and modern architectures.
             </p>
             <div className="hero-buttons">
               <motion.button
@@ -313,17 +342,20 @@ const App: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-visual"
           >
-            <div className="floating-icons">
-              {/* @ts-ignore */}
-              <FaMobile className="floating-icon" style={{ animationDelay: '0s' }} />
-              {/* @ts-ignore */}
-              <FaCode className="floating-icon" style={{ animationDelay: '1s' }} />
-              {/* @ts-ignore */}
-              <FaCloud className="floating-icon" style={{ animationDelay: '2s' }} />
-              {/* @ts-ignore */}
-              <FaChess className="floating-icon" style={{ animationDelay: '3s' }} />
-              {/* @ts-ignore */}
-              <FaBook className="floating-icon" style={{ animationDelay: '4s' }} />
+            <div className="hero-visual-content">
+              <TerminalWindow commands={terminalCommands} delay={800} />
+              <div className="floating-icons">
+                {/* @ts-ignore */}
+                <FaMobile className="floating-icon" style={{ animationDelay: '0s' }} />
+                {/* @ts-ignore */}
+                <FaCode className="floating-icon" style={{ animationDelay: '1s' }} />
+                {/* @ts-ignore */}
+                <FaCloud className="floating-icon" style={{ animationDelay: '2s' }} />
+                {/* @ts-ignore */}
+                <FaChess className="floating-icon" style={{ animationDelay: '3s' }} />
+                {/* @ts-ignore */}
+                <FaBook className="floating-icon" style={{ animationDelay: '4s' }} />
+              </div>
             </div>
           </motion.div>
         </div>
@@ -478,6 +510,27 @@ const App: React.FC = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Skill Bars Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="skill-bars-section"
+          >
+            <h3 className="skill-bars-title">Technical Proficiency</h3>
+            <div className="skill-bars-container">
+              {skillBars.map((skill, index) => (
+                <SkillBar
+                  key={skill.skill}
+                  skill={skill.skill}
+                  percentage={skill.percentage}
+                  color={skill.color}
+                />
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -594,8 +647,25 @@ const App: React.FC = () => {
                   ))}
                 </div>
                 <div className="app-store-links">
-                  {project.playStore && (
-                    <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                  {(project as any).website && (
+                    <a href={(project as any).website} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      🌐 View Website
+                    </a>
+                  )}
+                  {(project as any).githubUrl && (
+                    <a href={(project as any).githubUrl} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      {/* @ts-ignore */}
+                      <FaGithub className="github-icon-small" />
+                      GitHub
+                    </a>
+                  )}
+                  {(project as any).appStore && (
+                    <a href={(project as any).appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                      📱 App Store
+                    </a>
+                  )}
+                  {(project as any).playStore && (
+                    <a href={(project as any).playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
                       📱 Play Store
                     </a>
                   )}
@@ -657,7 +727,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="section">
+      <section id="contact" className="section contact-section">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -666,8 +736,37 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             className="section-header"
           >
-            <h2>Get In Touch</h2>
-            <p>Let's connect and create something amazing together</p>
+            <h2>Ready to Build Something Great?</h2>
+            <p>Let's discuss how I can help bring your mobile app vision to life</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="cta-box"
+          >
+            <h3>Looking for a Mobile and Web Developer?</h3>
+            <p>I specialize in building high-performance, scalable mobile and web applications that deliver exceptional user experiences. With 11+ years of experience and a track record of success at companies like Boeing, Bluesheets, and Dhani, I can help you:</p>
+            <ul className="cta-features">
+              <li>Build cross-platform mobile apps with React Native</li>
+              <li>Develop modern web applications with React and TypeScript</li>
+              <li>Optimize app performance and reduce crash rates</li>
+              <li>Implement modern architectures and best practices</li>
+              <li>Deliver production-ready applications on time</li>
+            </ul>
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 215, 0, 0.4)" }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-primary cta-button ripple-button"
+              onClick={(e) => {
+                createRipple(e);
+                window.open('https://www.linkedin.com/in/aman-shekhar/', '_blank');
+              }}
+            >
+              Let's Connect on LinkedIn
+            </motion.button>
           </motion.div>
           
           <motion.div
