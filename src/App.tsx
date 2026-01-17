@@ -18,7 +18,6 @@ import './App.css';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [projectFilter, setProjectFilter] = useState<string>('all');
 
   useEffect(() => {
     const handleScroll = () => {
