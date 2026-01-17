@@ -9,6 +9,8 @@ import ScrollProgress from './components/ScrollProgress';
 import AnimatedCounter from './components/AnimatedCounter';
 import TerminalWindow from './components/TerminalWindow';
 import SkillBar from './components/SkillBar';
+import MobileMenu from './components/MobileMenu';
+import BackToTop from './components/BackToTop';
 import './App.css';
 
 
@@ -16,6 +18,7 @@ import './App.css';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [projectFilter, setProjectFilter] = useState<string>('all');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -254,10 +257,13 @@ const App: React.FC = () => {
     }
   ];
 
+  const sections = ['home', 'about', 'skills', 'experience', 'projects', 'tutorials', 'contact'];
+
   return (
     <div className="App">
       <ScrollProgress />
       <MouseTrail />
+      <BackToTop />
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
         <motion.div 
@@ -272,7 +278,7 @@ const App: React.FC = () => {
             <span>Aman Shekhar</span>
           </div>
           <div className="nav-links">
-            {['home', 'about', 'skills', 'experience', 'projects', 'tutorials', 'contact'].map((section) => (
+            {sections.map((section) => (
               <button
                 key={section}
                 className={`nav-link ${activeSection === section ? 'active' : ''}`}
@@ -282,6 +288,11 @@ const App: React.FC = () => {
               </button>
             ))}
           </div>
+          <MobileMenu 
+            sections={sections}
+            activeSection={activeSection}
+            onSectionClick={scrollToSection}
+          />
         </motion.div>
       </nav>
 
