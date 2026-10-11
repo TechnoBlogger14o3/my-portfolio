@@ -208,7 +208,7 @@ const App: React.FC = () => {
       title: 'Dharmic Treasures',
       description: 'A personal passion project exploring cultural and spiritual content. Built as a time-pass project to showcase modern web development skills.',
       tech: ['React', 'Web Development', 'Personal Project'],
-      website: 'https://technoblogger14o3.github.io/dharmic-treasures/',
+      website: 'https://dharmic-treasures.com/',
       githubUrl: 'https://github.com/TechnoBlogger14o3/dharmic-treasures'
     },
     {
