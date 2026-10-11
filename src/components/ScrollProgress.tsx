@@ -26,10 +26,9 @@ const ScrollProgress: React.FC = () => {
         top: 0,
         left: 0,
         width: `${scrollProgress}%`,
-        height: '4px',
-        background: 'linear-gradient(90deg, #667eea, #764ba2, #ffd700)',
+        height: '2px',
+        background: '#6fbf96',
         zIndex: 10000,
-        boxShadow: '0 2px 10px rgba(102, 126, 234, 0.5)',
       }}
       initial={{ width: 0 }}
       animate={{ width: `${scrollProgress}%` }}

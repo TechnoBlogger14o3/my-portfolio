@@ -1772,3 +1772,431 @@ html {
     font-size: 0.9rem;
   }
 }
+
+/* Quiet visual system */
+html,
+body {
+  background-color: #101614;
+  color: #e6f0ea;
+  background-image:
+    linear-gradient(rgba(111, 191, 150, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 191, 150, 0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-attachment: fixed;
+}
+
+.App {
+  background: transparent;
+  color: #e6f0ea;
+}
+
+.navbar,
+.navbar.scrolled {
+  background: rgba(16, 22, 20, 0.92);
+  border-bottom: 1px solid #2a3832;
+  box-shadow: none;
+}
+
+.nav-logo {
+  color: #e6f0ea;
+  font-weight: 600;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+button,
+.nav-link,
+.mobile-menu-item {
+  font-family: inherit;
+}
+
+.logo-icon,
+.skill-icon,
+.tutorial-icon,
+.stat-icon,
+.social-icon,
+.experience-content h4,
+.extra-activities a,
+.current-goals li::before,
+.extra-activities li::before,
+.cta-features li::before {
+  color: #6fbf96;
+}
+
+.nav-link,
+.mobile-menu-item {
+  border-radius: 0;
+  color: #9aaba3;
+}
+
+.nav-link:hover,
+.nav-link.active,
+.mobile-menu-item:hover,
+.mobile-menu-item.active {
+  color: #6fbf96;
+  background: transparent;
+}
+
+.nav-link.active {
+  box-shadow: inset 0 -2px 0 #6fbf96;
+}
+
+.mobile-menu-button {
+  color: #e6f0ea;
+}
+
+.mobile-menu {
+  background: #101614;
+  box-shadow: none;
+  border-left: 1px solid #2a3832;
+}
+
+.mobile-menu-item.active {
+  box-shadow: inset 3px 0 0 #6fbf96;
+  font-weight: 600;
+}
+
+.hero {
+  background: transparent;
+}
+
+.hero::before,
+.section::before,
+.project-card::before,
+.project-card::after,
+.skill-category::before,
+.stat-card::before,
+.social-link::before,
+.tutorial-card::before {
+  display: none;
+}
+
+.hero-text {
+  animation: none;
+  color: #e6f0ea;
+}
+
+.hero-title {
+  color: #e6f0ea;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+}
+
+.highlight {
+  background: none;
+  -webkit-text-fill-color: #6fbf96;
+  color: #6fbf96;
+  white-space: nowrap;
+}
+
+.hero-subtitle {
+  color: #e6f0ea;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.hero-description,
+.section-header p,
+.about-text p,
+.experience-content p,
+.project-card p,
+.tutorial-card p,
+.cta-box > p,
+.stat-card p {
+  color: #9aaba3;
+}
+
+.section,
+.section:nth-child(even),
+.section:nth-child(even):not(.achievements-section),
+.contact-section {
+  background: transparent;
+}
+
+.section:hover::before {
+  opacity: 0;
+}
+
+.section-header {
+  text-align: left;
+}
+
+.section-header h2,
+.experience-content h3,
+.project-card h3,
+.skill-header h3,
+.tutorial-header h3,
+.cta-box h3,
+.stat-card h3 {
+  color: #e6f0ea;
+}
+
+.section-header p {
+  margin: 0;
+}
+
+.btn-primary,
+.btn-secondary,
+.cta-button {
+  border-radius: 6px;
+  box-shadow: none;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #6fbf96;
+  color: #101614;
+  border: 1px solid #6fbf96;
+}
+
+.btn-primary:hover {
+  background: #4e9a74;
+  color: #101614;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #6fbf96;
+  border: 1px solid #6fbf96;
+}
+
+.btn-secondary:hover {
+  background: rgba(111, 191, 150, 0.12);
+  transform: none;
+}
+
+.project-card,
+.skill-category,
+.stat-card,
+.tutorial-card,
+.experience-content,
+.cta-box,
+.social-link,
+.interactive-card,
+.current-goals,
+.education,
+.extra-activities {
+  background: #171f1c;
+  border: 1px solid #2a3832;
+  border-radius: 8px;
+  box-shadow: none;
+  color: #e6f0ea;
+}
+
+.current-goals,
+.education,
+.extra-activities {
+  border-left: 3px solid #6fbf96;
+}
+
+.current-goals h3,
+.current-goals li,
+.education h3,
+.education p,
+.extra-activities h3,
+.extra-activities li {
+  color: #e6f0ea;
+}
+
+.project-card:hover,
+.skill-category:hover,
+.stat-card:hover,
+.tutorial-card:hover,
+.social-link:hover,
+.interactive-card:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #6fbf96;
+}
+
+.project-card,
+.skill-category,
+.stat-card,
+.tutorial-card,
+.social-link {
+  cursor: default;
+}
+
+.social-link {
+  cursor: pointer;
+}
+
+.skill-item,
+.tech-tag,
+.period {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.skill-item,
+.tech-tag {
+  background: transparent;
+  color: #e6f0ea;
+  border: 1px solid #2a3832;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 400;
+  padding: 4px 8px;
+  box-shadow: none;
+}
+
+.skill-item:hover,
+.tech-tag:hover {
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+  border-color: #6fbf96;
+  color: #6fbf96;
+}
+
+.period {
+  display: block;
+  background: transparent;
+  color: #9aaba3;
+  padding: 0;
+  border-radius: 0;
+  margin: 8px 0 12px;
+}
+
+.experience-timeline {
+  max-width: 860px;
+}
+
+.experience-timeline::before {
+  left: 7px;
+  background: #2a3832;
+}
+
+.experience-item,
+.experience-item.left,
+.experience-item.right {
+  text-align: left;
+  padding-left: 36px;
+  padding-right: 0;
+}
+
+.experience-item::before,
+.experience-item.left::before,
+.experience-item.right::before {
+  left: 0;
+  right: auto;
+}
+
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 8px 0 14px;
+  color: #9aaba3;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.experience-points {
+  margin: 0 0 16px;
+  padding-left: 18px;
+  color: #9aaba3;
+}
+
+.experience-points li {
+  margin-bottom: 8px;
+  line-height: 1.55;
+}
+
+.experience-content .tech-stack {
+  justify-content: flex-start;
+}
+
+.experience-item::before {
+  background: #6fbf96;
+  border: 2px solid #101614;
+  box-shadow: 0 0 0 2px #6fbf96;
+}
+
+.app-store-link,
+.tutorial-link {
+  background: transparent;
+  color: #6fbf96;
+  border: 1px solid #6fbf96;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+.app-store-link:hover,
+.tutorial-link:hover {
+  transform: none;
+  box-shadow: none;
+  background: #6fbf96;
+  color: #101614;
+}
+
+.tutorial-card:hover .tutorial-icon {
+  transform: none;
+}
+
+.terminal-window {
+  border: 1px solid #2a3832;
+  border-radius: 8px;
+  box-shadow: none;
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.terminal-title,
+.terminal-body,
+.command {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.back-to-top {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: #6fbf96;
+  color: #101614;
+  box-shadow: none;
+}
+
+.back-to-top:hover {
+  transform: none;
+  box-shadow: none;
+  background: #4e9a74;
+}
+
+.scroll-progress {
+  height: 2px;
+  background: #6fbf96;
+  box-shadow: none;
+}
+
+.footer {
+  background: transparent;
+  color: #9aaba3;
+  border-top: 1px solid #2a3832;
+}
+
+.cta-features li,
+.footer p {
+  color: #9aaba3;
+}
+
+.stat-card h3 {
+  font-family: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: flex-start;
+    overflow: visible;
+    min-height: auto;
+    padding: 110px 0 48px;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+}

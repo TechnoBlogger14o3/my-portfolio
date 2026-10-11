@@ -31,11 +31,9 @@ const BackToTop: React.FC = () => {
         <motion.button
           className="back-to-top"
           onClick={scrollToTop}
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           aria-label="Back to top"
         >
           {/* @ts-ignore */}

@@ -2,13 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaHackerrank, FaStackOverflow, FaYoutube, FaMedium, FaChess, FaBook, FaCode, FaCloud, FaMobile, FaDatabase } from 'react-icons/fa';
 import { SiLeetcode, SiAmazon, SiNotion } from 'react-icons/si';
-import Simple3DBackground from './components/Simple3DBackground';
-import MouseTrail from './components/MouseTrail';
-import TypewriterText from './components/TypewriterText';
 import ScrollProgress from './components/ScrollProgress';
 import AnimatedCounter from './components/AnimatedCounter';
 import TerminalWindow from './components/TerminalWindow';
-import SkillBar from './components/SkillBar';
 import MobileMenu from './components/MobileMenu';
 import BackToTop from './components/BackToTop';
 import './App.css';
@@ -48,25 +44,6 @@ const App: React.FC = () => {
     }
   };
 
-  const createRipple = (event: React.MouseEvent<HTMLButtonElement>) => {
-    const button = event.currentTarget;
-    const circle = document.createElement('span');
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
-
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-    circle.classList.add('ripple');
-
-    const ripple = button.getElementsByClassName('ripple')[0];
-    if (ripple) {
-      ripple.remove();
-    }
-
-    button.appendChild(circle);
-  };
-
   const socialLinks = [
     { icon: FaLinkedin as React.ComponentType<{ className?: string }>, url: 'https://www.linkedin.com/in/aman-shekhar/', label: 'LinkedIn' },
     { icon: FaGithub as React.ComponentType<{ className?: string }>, url: 'https://github.com/TechnoBlogger14o3', label: 'GitHub' },
@@ -103,17 +80,6 @@ const App: React.FC = () => {
     }
   ];
 
-  const skillBars = [
-    { skill: 'React Native', percentage: 95, color: '#61DAFB' },
-    { skill: 'React JS', percentage: 92, color: '#61DAFB' },
-    { skill: 'TypeScript', percentage: 90, color: '#3178C6' },
-    { skill: 'Kotlin', percentage: 88, color: '#7F52FF' },
-    { skill: 'Java', percentage: 85, color: '#ED8B00' },
-    { skill: 'SwiftUI', percentage: 80, color: '#FA7343' },
-    { skill: 'Node.js', percentage: 82, color: '#339933' },
-    { skill: 'Three.js / R3F', percentage: 75, color: '#000000' },
-  ];
-
   const terminalCommands = [
     'git status',
     'npm install',
@@ -124,52 +90,106 @@ const App: React.FC = () => {
 
   const experiences = [
     {
-      title: 'FullStack Engineer (Android, iOS, React-Native)',
-      company: 'Boeing',
-      location: 'Bengaluru',
-      period: 'June 2024 - Present',
-      description: 'Responsible for Mobile and Web app development using React JS, Node JS, React-Native, TypeScript',
-      technologies: ['React JS', 'Node JS', 'React-Native', 'TypeScript']
+      title: 'Boeing: Lead Full Stack Engineer',
+      employment: 'Full-time',
+      location: 'Bengaluru, Karnataka, India',
+      arrangement: 'Hybrid',
+      period: 'Jun 2024 – Present',
+      duration: '2 yrs 5 mos',
+      summary: 'Architecting and delivering full-stack mobile and web solutions at one of the world\'s leading aerospace companies.',
+      highlights: [
+        'Build and maintain scalable applications using React, Node.js, and React Native, serving internal and enterprise users',
+        'Design modular frontend architectures that improve code maintainability, team velocity, and long-term scalability',
+        'Implement high-performance UI rendering and optimised API communication to ensure smooth cross-platform experiences',
+        'Drive technical decisions in collaboration with product, design, and backend engineering teams',
+        'Apply mobile-first engineering principles to web platforms, bridging React Native and React ecosystems'
+      ],
+      technologies: ['Full-Stack Development', 'React', 'Node.js', 'React Native']
     },
     {
-      title: 'Lead Engineer (Android, iOS, React-Native)',
-      company: 'Bluesheets',
+      title: 'Bluesheets: Lead Mobile App Engineer (Android & iOS)',
+      employment: 'Full-time',
       location: 'Singapore',
-      period: 'Feb 2023 - May 2024',
-      description: 'Improved Core Architecture and App performance by 25%. Built Offline support feature and increased App Stability by 20%. Reduced APK from 21 MB to 9.8 MB.',
-      technologies: ['Android', 'iOS', 'React-Native', 'Performance Optimization', 'Modular Architecture']
+      arrangement: 'Remote',
+      period: 'Feb 2023 – May 2024',
+      duration: '1 yr 4 mos',
+      summary: 'Led mobile engineering for Bluesheets, a Singapore-based enterprise fintech platform, delivering Android and iOS applications used by financial institutions across Asia.',
+      highlights: [
+        'Spearheaded end-to-end development of Android and iOS mobile applications, owning architecture, implementation, and release cycles',
+        'Designed scalable cross-platform mobile architecture using React Native, Kotlin, and Swift — enabling rapid feature delivery across both platforms',
+        'Drove significant performance improvements and stability enhancements, reducing crash rates and improving app responsiveness',
+        'Delivered high-quality, robust applications supporting complex enterprise financial workflows and real-time data processing',
+        'Led and mentored a mobile engineering team, establishing best practices for code review, testing, and CI/CD pipelines'
+      ],
+      technologies: ['React Native', 'Kotlin', 'Swift', 'Redux.js', 'Scrum']
     },
     {
-      title: 'Lead Engineer (Android, iOS, React-Native)',
-      company: 'Dhani',
-      location: 'Gurugram',
-      period: 'Oct 2021 - Feb 2023',
-      description: 'Spearheaded UI Library development, built features increasing user engagement by 20%. Complete app revamp using MVVM with Clean Architecture. Achieved 99.97% crash-free session rate.',
-      technologies: ['Kotlin', 'MVVM', 'Clean Architecture', 'Memory Optimization', 'UI Library']
+      title: 'Dhani: Lead Mobile App Engineer (Android & iOS)',
+      employment: 'Full-time',
+      location: 'Gurugram, Haryana, India',
+      arrangement: 'Remote',
+      period: 'Oct 2021 – Feb 2023',
+      duration: '1 yr 5 mos',
+      summary: 'Led mobile engineering for Dhani, one of India\'s leading fintech super-apps, building Android and iOS products serving millions of users in the lending, insurance, and payments space.',
+      highlights: [
+        'Architected and maintained mobile application infrastructure for Android and iOS fintech products, ensuring reliability at scale',
+        'Improved application stability and crash-free rate through proactive monitoring, crash analysis, and systematic bug resolution',
+        'Implemented scalable mobile architecture patterns capable of supporting large, rapidly growing user traffic',
+        'Collaborated with product and backend teams to deliver new features on aggressive timelines without compromising quality',
+        'Established performance benchmarks and monitoring processes to maintain a high-quality user experience'
+      ],
+      technologies: ['Android', 'iOS', 'Redux.js', 'Scrum']
     },
     {
-      title: 'Lead Engineer (Android, iOS, React-Native)',
-      company: 'Freecharge',
-      location: 'Gurugram',
-      period: 'Jul 2020 - Sep 2021',
-      description: 'Developed features end-to-end, created React-Native plugins, implemented RSA/AES encryption and Fingerprint authentication for secure payments.',
-      technologies: ['React-Native', 'RSA/AES Encryption', 'Fingerprint Authentication', 'Payment Security']
+      title: 'Freecharge: Lead Mobile App Engineer (Android & iOS)',
+      employment: 'Full-time',
+      location: 'Gurugram, Haryana, India',
+      arrangement: 'Remote',
+      period: 'Jul 2020 – Oct 2021',
+      duration: '1 yr 4 mos',
+      summary: 'Led mobile engineering at Freecharge, one of India\'s pioneering digital payments and fintech platforms, building high-traffic Android and iOS applications.',
+      highlights: [
+        'Led development of high-traffic fintech mobile applications serving millions of active users on the Freecharge platform',
+        'Optimised application performance and significantly reduced APK size, directly improving install conversion rates and app store ranking',
+        'Improved installation rates and overall user experience through systematic performance tuning and UX enhancements',
+        'Drove stability improvements and reduced crash rates through rigorous testing, crash reporting, and root cause analysis',
+        'Worked closely with product and backend teams to ship payments and financial features on tight release schedules'
+      ],
+      technologies: ['Android', 'iOS', 'Redux.js', 'Scrum']
     },
     {
-      title: 'Senior Software Engineer (Android)',
-      company: 'Photon Infotech',
-      location: 'Bengaluru',
-      period: 'Oct 2017 - Jun 2020',
-      description: 'Worked on Health Sector apps (Sentara and Optima), optimized code, revamped to MVVM architecture, created high-quality optimized products.',
-      technologies: ['Android', 'MVVM', 'Health Apps', 'Code Optimization']
+      title: 'Photon: Senior Software Engineer (Android & iOS)',
+      employment: 'Full-time',
+      location: 'Bangalore',
+      arrangement: 'On-site',
+      period: 'Oct 2017 – Jun 2020',
+      duration: '2 yrs 9 mos',
+      summary: 'Built high-impact Android and iOS applications at Photon, a global digital transformation and product engineering company, delivering solutions for enterprise clients.',
+      highlights: [
+        'Built high-performance, feature-rich Android applications with a strong focus on responsiveness, battery efficiency, and clean architecture',
+        'Integrated external APIs and third-party services to enhance app capabilities and deliver rich user experiences',
+        'Collaborated closely with product managers, designers, and backend teams to deliver new features from concept to production',
+        'Contributed to code review culture and shared best practices across the mobile team',
+        'Gained deep expertise in native Android development, Kotlin, and cross-platform mobile patterns'
+      ],
+      technologies: ['Android', 'Kotlin', 'iOS', 'Scrum']
     },
     {
-      title: 'Software Engineer (Android)',
-      company: 'eSecForte Technology',
-      location: 'Bengaluru',
-      period: 'June 2014 - Sep 2017',
-      description: 'Developed various apps including ANI News, Fingertips Education app, and Essential Newborn Care APP.',
-      technologies: ['Android', 'News Apps', 'Education Apps', 'Healthcare Apps']
+      title: 'eSecForte Technology: Android Application Developer',
+      employment: 'Full-time',
+      location: 'Bangalore',
+      arrangement: '',
+      period: 'Jun 2014 – Sep 2017',
+      duration: '3 yrs 4 mos',
+      summary: 'Started my engineering career at eSecForte Technology, a cybersecurity and software company, where I laid the foundation for my expertise in Android, iOS, and React Native development.',
+      highlights: [
+        'Reduced Android APK size by 53%, significantly improving download rates and device storage efficiency',
+        'Improved overall application performance by 25% through systematic profiling and code optimisation',
+        'Achieved 99.97% crash-free sessions through rigorous testing, memory management, and stability fixes',
+        'Designed and implemented offline-first architecture for robust app behaviour in low-connectivity environments',
+        'Led development across Android, iOS, and React Native, building strong foundations in cross-platform mobile engineering'
+      ],
+      technologies: ['Android', 'iOS', 'React Native']
     }
   ];
 
@@ -192,7 +212,7 @@ const App: React.FC = () => {
       title: 'Freecharge Business',
       description: 'Improved application performance through optimization techniques and played a key role in overseeing React-Native module flow.',
       tech: ['React-Native', 'Performance Optimization', 'Payment Integration'],
-      appStore: 'https://apps.apple.com/us/app/freecharge-upi-credit-cards/id877495926',
+      appStore: 'https://apps.apple.com/in/app/freecharge-upi-bill-payments/id877495926',
       playStore: 'https://play.google.com/store/apps/details?id=com.freecharge.android'
     },
     {
@@ -261,7 +281,6 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <ScrollProgress />
-      <MouseTrail />
       <BackToTop />
       {/* Navigation */}
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -297,23 +316,18 @@ const App: React.FC = () => {
 
       {/* Hero Section */}
       <section id="home" className="hero">
-        <Simple3DBackground />
         <div className="hero-content">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5 }}
             className="hero-text"
           >
             <h1 className="hero-title">
               Hi, I'm <span className="highlight">Aman Shekhar</span>
             </h1>
             <h2 className="hero-subtitle">
-              <TypewriterText 
-                text="Lead Engineer with 11+ Years of Experience" 
-                speed={80}
-                delay={1000}
-              />
+              Lead Engineer with 11+ Years of Experience
             </h2>
             <p className="hero-description">
               Lead Engineer with 11+ years of experience delivering high-performance mobile applications. 
@@ -321,51 +335,29 @@ const App: React.FC = () => {
               Specialized in React Native, Android, iOS, and modern architectures.
             </p>
             <div className="hero-buttons">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 215, 0, 0.4)" }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-primary ripple-button"
-                onClick={(e) => {
-                  createRipple(e);
-                  scrollToSection('contact');
-                }}
+              <button
+                className="btn-primary"
+                onClick={() => scrollToSection('contact')}
               >
                 Get In Touch
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 255, 255, 0.3)" }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-secondary ripple-button"
-                onClick={(e) => {
-                  createRipple(e);
-                  scrollToSection('projects');
-                }}
+              </button>
+              <button
+                className="btn-secondary"
+                onClick={() => scrollToSection('projects')}
               >
                 View Projects
-              </motion.button>
+              </button>
             </div>
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="hero-visual"
           >
             <div className="hero-visual-content">
               <TerminalWindow commands={terminalCommands} delay={800} />
-              <div className="floating-icons">
-                {/* @ts-ignore */}
-                <FaMobile className="floating-icon" style={{ animationDelay: '0s' }} />
-                {/* @ts-ignore */}
-                <FaCode className="floating-icon" style={{ animationDelay: '1s' }} />
-                {/* @ts-ignore */}
-                <FaCloud className="floating-icon" style={{ animationDelay: '2s' }} />
-                {/* @ts-ignore */}
-                <FaChess className="floating-icon" style={{ animationDelay: '3s' }} />
-                {/* @ts-ignore */}
-                <FaBook className="floating-icon" style={{ animationDelay: '4s' }} />
-              </div>
             </div>
           </motion.div>
         </div>
@@ -435,8 +427,6 @@ const App: React.FC = () => {
             >
               <motion.div 
                 className="stat-card"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* @ts-ignore */}
                 <FaCode className="stat-icon" />
@@ -445,8 +435,6 @@ const App: React.FC = () => {
               </motion.div>
               <motion.div 
                 className="stat-card"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* @ts-ignore */}
                 <FaMobile className="stat-icon" />
@@ -455,8 +443,6 @@ const App: React.FC = () => {
               </motion.div>
               <motion.div 
                 className="stat-card"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* @ts-ignore */}
                 <FaCloud className="stat-icon" />
@@ -465,8 +451,6 @@ const App: React.FC = () => {
               </motion.div>
               <motion.div 
                 className="stat-card"
-                whileHover={{ scale: 1.05, y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
               >
                 {/* @ts-ignore */}
                 <FaBook className="stat-icon" />
@@ -498,12 +482,6 @@ const App: React.FC = () => {
                 key={skill.category}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  y: -8,
-                  rotateY: 5,
-                  transition: { duration: 0.3 }
-                }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 className="skill-category interactive-skill-card"
@@ -521,26 +499,6 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          {/* Skill Bars Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="skill-bars-section"
-          >
-            <h3 className="skill-bars-title">Technical Proficiency</h3>
-            <div className="skill-bars-container">
-              {skillBars.map((skill, index) => (
-                <SkillBar
-                  key={skill.skill}
-                  skill={skill.skill}
-                  percentage={skill.percentage}
-                  color={skill.color}
-                />
-              ))}
-            </div>
-          </motion.div>
         </div>
       </section>
 
@@ -566,13 +524,21 @@ const App: React.FC = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`experience-item ${index % 2 === 0 ? 'left' : 'right'}`}
+                className="experience-item"
               >
                 <div className="experience-content">
                   <h3>{exp.title}</h3>
-                  <h4>{exp.company} • {exp.location}</h4>
-                  <span className="period">{exp.period}</span>
-                  <p>{exp.description}</p>
+                  <p className="experience-meta">
+                    <span>{exp.employment}</span>
+                    <span>{exp.period} · {exp.duration}</span>
+                    <span>{exp.arrangement ? `${exp.location} · ${exp.arrangement}` : exp.location}</span>
+                  </p>
+                  <p>{exp.summary}</p>
+                  <ul className="experience-points">
+                    {exp.highlights.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                   <div className="tech-stack">
                     {exp.technologies.map((tech) => (
                       <span key={tech} className="tech-tag">{tech}</span>
@@ -605,11 +571,6 @@ const App: React.FC = () => {
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ 
-                  scale: 1.03, 
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 className="project-card interactive-card"
@@ -624,12 +585,12 @@ const App: React.FC = () => {
                 <div className="app-store-links">
                   {project.appStore && (
                     <a href={project.appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      📱 App Store
+                      App Store
                     </a>
                   )}
                   {project.playStore && (
                     <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      📱 Play Store
+                      Play Store
                     </a>
                   )}
                 </div>
@@ -640,11 +601,6 @@ const App: React.FC = () => {
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ 
-                  scale: 1.03, 
-                  y: -10,
-                  transition: { duration: 0.3 }
-                }}
                 transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
                 viewport={{ once: true }}
                 className="project-card interactive-card"
@@ -659,7 +615,7 @@ const App: React.FC = () => {
                 <div className="app-store-links">
                   {(project as any).website && (
                     <a href={(project as any).website} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      🌐 View Website
+                      Website
                     </a>
                   )}
                   {(project as any).githubUrl && (
@@ -671,12 +627,12 @@ const App: React.FC = () => {
                   )}
                   {(project as any).appStore && (
                     <a href={(project as any).appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      📱 App Store
+                      App Store
                     </a>
                   )}
                   {(project as any).playStore && (
                     <a href={(project as any).playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      📱 Play Store
+                      Play Store
                     </a>
                   )}
                 </div>
@@ -706,7 +662,7 @@ const App: React.FC = () => {
                 key={tutorial.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
                 className="tutorial-card"
               >
@@ -766,17 +722,12 @@ const App: React.FC = () => {
               <li>Implement modern architectures and best practices</li>
               <li>Deliver production-ready applications on time</li>
             </ul>
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(255, 215, 0, 0.4)" }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-primary cta-button ripple-button"
-              onClick={(e) => {
-                createRipple(e);
-                window.open('https://www.linkedin.com/in/aman-shekhar/', '_blank');
-              }}
+            <button
+              className="btn-primary cta-button"
+              onClick={() => window.open('https://www.linkedin.com/in/aman-shekhar/', '_blank')}
             >
               Let's Connect on LinkedIn
-            </motion.button>
+            </button>
           </motion.div>
           
           <motion.div
@@ -793,8 +744,6 @@ const App: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
-                whileHover={{ scale: 1.1, y: -5 }}
-                whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
