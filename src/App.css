@@ -2188,6 +2188,239 @@ button,
   font-weight: 500;
 }
 
+.hero-illustration {
+  width: min(100%, 520px);
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.hero-scene {
+  transform-origin: 300px 392px;
+  animation: hero-float 5.5s ease-in-out infinite;
+}
+
+.desk-line,
+.mug-handle,
+.bridge,
+.brow,
+.mouth,
+.diagram-path,
+.apple-stem,
+.steam path {
+  fill: none;
+  stroke: #5c6b82;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.desk-dot,
+.hair,
+.beard,
+.mustache,
+.eye {
+  fill: #4e596c;
+}
+
+.monitor rect,
+.laptop > rect,
+.sticker {
+  fill: #e7eef4;
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.screen-line {
+  fill: #c5d0dc;
+  stroke: none;
+  transform-box: fill-box;
+  transform-origin: left center;
+  animation: screen-line 5s ease-in-out infinite;
+}
+
+.screen-line:nth-child(2) { animation-delay: 0.35s; }
+.screen-line:nth-child(3) { animation-delay: 0.7s; }
+.screen-line:nth-child(4) { animation-delay: 1.05s; }
+.screen-line:nth-child(5) { animation-delay: 1.4s; }
+
+.diagram-path {
+  stroke-dasharray: 4 6;
+}
+
+.diagram-node {
+  fill: #e7eef4;
+  stroke: #5c6b82;
+  stroke-width: 3;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: node-pulse 3.6s ease-in-out infinite;
+}
+
+.diagram-node:nth-child(3) { animation-delay: 0.4s; }
+.diagram-node:nth-child(4) { animation-delay: 0.8s; }
+
+.shirt {
+  fill: #7ea2e0;
+  stroke: #5c6b82;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.neck,
+.face,
+.ear {
+  fill: #f4d3c2;
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.hair,
+.beard {
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.lens {
+  fill: none;
+  stroke: #4e596c;
+  stroke-width: 3.5;
+}
+
+.eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-blink 4.8s ease-in-out infinite;
+}
+
+.eye-late {
+  animation-delay: 0.08s;
+}
+
+.laptop > rect {
+  fill: #d7dee6;
+}
+
+.sticker-label,
+.js-label {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.sticker-label {
+  fill: #4e596c;
+}
+
+.apple-logo {
+  fill: #c5ced8;
+  stroke: #5c6b82;
+  stroke-width: 2.5;
+}
+
+.apple-leaf {
+  fill: #7dba6a;
+  stroke: #5c6b82;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.js-heart {
+  fill: #f3b7c6;
+  stroke: #5c6b82;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.js-label {
+  fill: #8d4d63;
+  font-size: 11px;
+}
+
+.mug rect {
+  fill: #e15d62;
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.mug-rim {
+  fill: #f08a86;
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.steam path {
+  stroke: #9aaba3;
+  stroke-width: 2.5;
+  opacity: 0;
+}
+
+.steam {
+  animation: hero-steam 2.8s ease-out infinite;
+}
+
+.steam-b { animation-delay: 0.7s; }
+.steam-c { animation-delay: 1.4s; }
+
+.book {
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.book-a { fill: #6d92d6; }
+.book-b { fill: #8eaddf; }
+.book-c { fill: #5d7fc4; }
+
+.apple circle {
+  fill: #8bc572;
+  stroke: #5c6b82;
+  stroke-width: 3;
+}
+
+.apple-stem {
+  stroke-width: 2.5;
+}
+
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes hero-blink {
+  0%, 40%, 46%, 52%, 58%, 100% { transform: scaleY(1); }
+  43%, 55% { transform: scaleY(0.08); }
+}
+
+@keyframes hero-steam {
+  0% { opacity: 0; transform: translateY(8px); }
+  20% { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-26px); }
+}
+
+@keyframes screen-line {
+  0%, 100% { transform: scaleX(0.45); opacity: 0.45; }
+  40%, 70% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes node-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scene,
+  .eye,
+  .steam,
+  .screen-line,
+  .diagram-node {
+    animation: none;
+  }
+
+  .steam path {
+    opacity: 0.45;
+  }
+}
+
 @media (max-width: 768px) {
   .hero {
     align-items: flex-start;

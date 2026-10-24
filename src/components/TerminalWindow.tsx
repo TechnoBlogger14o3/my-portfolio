@@ -34,11 +34,11 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({ commands, delay = 1000 
           <span className="terminal-button yellow"></span>
           <span className="terminal-button green"></span>
         </div>
-        <div className="terminal-title">Terminal — Portfolio</div>
+        <div className="terminal-title">zsh — release</div>
       </div>
       <div className="terminal-body">
         <div className="terminal-prompt">
-          <span className="prompt-user">coder@portfolio</span>
+          <span className="prompt-user">aman@mobile</span>
           <span className="prompt-symbol">:~$</span>
         </div>
         {displayedCommands.map((cmd, index) => (

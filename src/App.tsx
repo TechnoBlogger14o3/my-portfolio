@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaHackerrank, FaStackOverflow, FaYoutube, FaMediu
 import { SiLeetcode, SiAmazon, SiNotion } from 'react-icons/si';
 import ScrollProgress from './components/ScrollProgress';
 import AnimatedCounter from './components/AnimatedCounter';
-import TerminalWindow from './components/TerminalWindow';
+import HeroIllustration from './components/HeroIllustration';
 import MobileMenu from './components/MobileMenu';
 import BackToTop from './components/BackToTop';
 import './App.css';
@@ -80,14 +80,6 @@ const App: React.FC = () => {
     }
   ];
 
-  const terminalCommands = [
-    'git status',
-    'npm install',
-    'npm start',
-    'Building portfolio...',
-    '✨ Portfolio ready!',
-  ];
-
   const experiences = [
     {
       title: 'Boeing: Lead Full Stack Engineer',
@@ -138,7 +130,11 @@ const App: React.FC = () => {
         'Collaborated with product and backend teams to deliver new features on aggressive timelines without compromising quality',
         'Established performance benchmarks and monitoring processes to maintain a high-quality user experience'
       ],
-      technologies: ['Android', 'iOS', 'Redux.js', 'Scrum']
+      technologies: ['Android', 'iOS', 'Redux.js', 'Scrum'],
+      links: [
+        { label: 'App Store', href: 'https://apps.apple.com/in/app/dhani-online-shopping-app/id1273192455' },
+        { label: 'Play Store', href: 'https://play.google.com/store/apps/details?id=com.indiaBulls' }
+      ]
     },
     {
       title: 'Freecharge: Lead Mobile App Engineer (Android & iOS)',
@@ -172,7 +168,10 @@ const App: React.FC = () => {
         'Contributed to code review culture and shared best practices across the mobile team',
         'Gained deep expertise in native Android development, Kotlin, and cross-platform mobile patterns'
       ],
-      technologies: ['Android', 'Kotlin', 'iOS', 'Scrum']
+      technologies: ['Android', 'Kotlin', 'iOS', 'Scrum'],
+      links: [
+        { label: 'Sentara', href: 'https://play.google.com/store/apps/details?id=com.sentara.android' }
+      ]
     },
     {
       title: 'eSecForte Technology: Android Application Developer',
@@ -189,59 +188,60 @@ const App: React.FC = () => {
         'Designed and implemented offline-first architecture for robust app behaviour in low-connectivity environments',
         'Led development across Android, iOS, and React Native, building strong foundations in cross-platform mobile engineering'
       ],
-      technologies: ['Android', 'iOS', 'React Native']
+      technologies: ['Android', 'iOS', 'React Native'],
+      links: [
+        { label: 'ANI News', href: 'https://play.google.com/store/apps/details?id=com.ani.news' },
+        { label: 'Fingertips', href: 'https://play.google.com/store/apps/details?id=com.fingertips' }
+      ]
     }
   ];
 
-  const majorProjects = [
+  const projects = [
     {
       title: 'Bluesheets',
-      description: 'Contributed to designing comprehensive front-end architecture and collaborated with project management teams to incorporate new requirements.',
-      tech: ['React-Native', 'Frontend Architecture', 'Project Management'],
+      description: 'Front-end architecture for Android and iOS apps used by financial institutions, with new requirements folded in alongside the project team.',
+      tech: ['React Native', 'Kotlin', 'Swift'],
       appStore: 'https://apps.apple.com/in/app/bluesheets/id1634779626/',
       playStore: 'https://play.google.com/store/apps/details?id=com.bluesheets&pli=1'
     },
     {
       title: 'Dhani',
-      description: 'Led development of features that increased user engagement by 20%. Addressed memory optimization issues and improved app stability.',
-      tech: ['Kotlin', 'MVVM', 'Memory Optimization', 'User Engagement'],
+      description: 'Features on a fintech super-app that raised user engagement by 20%, plus memory work that improved stability.',
+      tech: ['Kotlin', 'MVVM', 'Android', 'iOS'],
       appStore: 'https://apps.apple.com/in/app/dhani-online-shopping-app/id1273192455',
       playStore: 'https://play.google.com/store/apps/details?id=com.indiaBulls'
     },
     {
-      title: 'Freecharge Business',
-      description: 'Improved application performance through optimization techniques and played a key role in overseeing React-Native module flow.',
-      tech: ['React-Native', 'Performance Optimization', 'Payment Integration'],
+      title: 'Freecharge',
+      description: 'Performance work and React Native module flow on a high-traffic UPI and bill-payments app.',
+      tech: ['React Native', 'Android', 'iOS'],
       appStore: 'https://apps.apple.com/in/app/freecharge-upi-bill-payments/id877495926',
       playStore: 'https://play.google.com/store/apps/details?id=com.freecharge.android'
     },
     {
       title: 'Sentara Healthcare',
-      description: 'Successfully integrated Video Calling Feature and actively engaged in scrum meetings for effective project management.',
-      tech: ['Android', 'Video Calling', 'Healthcare', 'Scrum'],
+      description: 'Video calling integrated into the Sentara Android app, delivered through the scrum cycle.',
+      tech: ['Android', 'Video Calling', 'Healthcare'],
       playStore: 'https://play.google.com/store/apps/details?id=com.sentara.android'
-    }
-  ];
-
-  const otherProjects = [
-    {
-      title: 'Dharmic Treasures',
-      description: 'A personal passion project exploring cultural and spiritual content. Built as a time-pass project to showcase modern web development skills.',
-      tech: ['React', 'Web Development', 'Personal Project'],
-      website: 'https://dharmic-treasures.com/',
-      githubUrl: 'https://github.com/TechnoBlogger14o3/dharmic-treasures'
     },
     {
       title: 'ANI News',
-      description: 'Integral to the inception and development of this project, contributing to its creation from the ground up.',
-      tech: ['Android', 'News App', 'Content Management'],
+      description: 'News app built from the first version, covering the Android client and how stories reach the reader.',
+      tech: ['Android', 'News'],
       playStore: 'https://play.google.com/store/apps/details?id=com.ani.news'
     },
     {
       title: 'Fingertips',
-      description: 'Played a pivotal role in the conception and development of the Fingertips project, actively contributing to its creation from the very beginning.',
-      tech: ['Android', 'Education App', 'Student Portal'],
+      description: 'Education app for students, taken from the first concept through the Android release.',
+      tech: ['Android', 'Education'],
       playStore: 'https://play.google.com/store/apps/details?id=com.fingertips'
+    },
+    {
+      title: 'Dharmic Treasures',
+      description: 'A React site for cultural and spiritual writing. The repository and the live site are both public.',
+      tech: ['React', 'Web'],
+      website: 'https://dharmic-treasures.com/',
+      githubUrl: 'https://github.com/TechnoBlogger14o3/dharmic-treasures'
     }
   ];
 
@@ -327,10 +327,10 @@ const App: React.FC = () => {
               Hi, I'm <span className="highlight">Aman Shekhar</span>
             </h1>
             <h2 className="hero-subtitle">
-              Lead Engineer with 11+ Years of Experience
+              Lead Engineer with 12+ Years of Experience
             </h2>
             <p className="hero-description">
-              Lead Engineer with 11+ years of experience delivering high-performance mobile applications. 
+              Lead Engineer with 12+ years of experience delivering high-performance mobile applications. 
               I help companies build scalable, efficient mobile solutions that drive business growth. 
               Specialized in React Native, Android, iOS, and modern architectures.
             </p>
@@ -347,6 +347,14 @@ const App: React.FC = () => {
               >
                 View Projects
               </button>
+              <a
+                className="btn-secondary"
+                href={`${process.env.PUBLIC_URL}/resume.html`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Résumé
+              </a>
             </div>
           </motion.div>
           
@@ -357,7 +365,7 @@ const App: React.FC = () => {
             className="hero-visual"
           >
             <div className="hero-visual-content">
-              <TerminalWindow commands={terminalCommands} delay={800} />
+              <HeroIllustration />
             </div>
           </motion.div>
         </div>
@@ -374,7 +382,7 @@ const App: React.FC = () => {
             className="section-header"
           >
             <h2>About Me</h2>
-            <p>Lead Engineer with 11+ years of experience in Mobile App Development</p>
+            <p>Lead Engineer with 12+ years of experience in Mobile App Development</p>
           </motion.div>
           
           <div className="about-content">
@@ -386,20 +394,20 @@ const App: React.FC = () => {
               className="about-text"
             >
               <p>
-                I am a Lead Engineer with 11+ years of experience in Mobile App Development, specializing in Android, iOS, and React-Native. 
+                I am a Lead Engineer with 12+ years of experience in Mobile App Development, specializing in Android, iOS, and React-Native. 
                 Throughout my career, I've worked with companies like Boeing, Bluesheets, Dhani, and Freecharge, delivering high-quality mobile applications.
               </p>
               <p>
                 My expertise includes performance optimization, architecture design, and building scalable mobile solutions. 
-                I've successfully improved app performance by 25%, reduced APK sizes, and achieved 99.97% crash-free session rates.
+                I've reduced Android APK size by 53%, improved application performance by 25%, and reached 99.97% crash-free sessions.
               </p>
               <div className="current-goals">
                 <h3>Key Achievements</h3>
                 <ul>
-                  <li>Improved Core Architecture and App performance by 25%</li>
-                  <li>Reduced APK size from 21 MB to 9.8 MB</li>
-                  <li>Achieved 99.97% crash-free session rate</li>
-                  <li>Built features increasing user engagement by 20%</li>
+                  <li>Reduced Android APK size by 53%</li>
+                  <li>Improved application performance by 25%</li>
+                  <li>Achieved 99.97% crash-free sessions</li>
+                  <li>Designed an offline-first architecture for low-connectivity use</li>
                 </ul>
               </div>
               <div className="education">
@@ -430,7 +438,7 @@ const App: React.FC = () => {
               >
                 {/* @ts-ignore */}
                 <FaCode className="stat-icon" />
-                <h3><AnimatedCounter value={11} suffix="+" /></h3>
+                <h3><AnimatedCounter value={12} suffix="+" /></h3>
                 <p>Years Experience</p>
               </motion.div>
               <motion.div 
@@ -544,6 +552,15 @@ const App: React.FC = () => {
                       <span key={tech} className="tech-tag">{tech}</span>
                     ))}
                   </div>
+                  {exp.links && (
+                    <div className="app-store-links">
+                      {exp.links.map((link) => (
+                        <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -561,12 +578,12 @@ const App: React.FC = () => {
             viewport={{ once: true }}
             className="section-header"
           >
-            <h2>Projects & Achievements</h2>
-            <p>Some of my recent work and accomplishments</p>
+            <h2>Projects</h2>
+            <p>Apps shipped on Android and iOS, plus a public site.</p>
           </motion.div>
           
           <div className="projects-grid">
-            {majorProjects.map((project, index) => (
+            {projects.map((project, index) => (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, y: 30 }}
@@ -583,55 +600,25 @@ const App: React.FC = () => {
                   ))}
                 </div>
                 <div className="app-store-links">
-                  {project.appStore && (
-                    <a href={project.appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      App Store
-                    </a>
-                  )}
-                  {project.playStore && (
-                    <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
-                      Play Store
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-            {otherProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
-                viewport={{ once: true }}
-                className="project-card interactive-card"
-              >
-                <h3>{project.title}</h3>
-                <p>{project.description}</p>
-                <div className="project-tech">
-                  {project.tech.map((tech) => (
-                    <span key={tech} className="tech-tag">{tech}</span>
-                  ))}
-                </div>
-                <div className="app-store-links">
-                  {(project as any).website && (
-                    <a href={(project as any).website} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                  {'website' in project && project.website && (
+                    <a href={project.website} target="_blank" rel="noopener noreferrer" className="app-store-link">
                       Website
                     </a>
                   )}
-                  {(project as any).githubUrl && (
-                    <a href={(project as any).githubUrl} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                  {'githubUrl' in project && project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="app-store-link">
                       {/* @ts-ignore */}
                       <FaGithub className="github-icon-small" />
                       GitHub
                     </a>
                   )}
-                  {(project as any).appStore && (
-                    <a href={(project as any).appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                  {'appStore' in project && project.appStore && (
+                    <a href={project.appStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
                       App Store
                     </a>
                   )}
-                  {(project as any).playStore && (
-                    <a href={(project as any).playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
+                  {'playStore' in project && project.playStore && (
+                    <a href={project.playStore} target="_blank" rel="noopener noreferrer" className="app-store-link">
                       Play Store
                     </a>
                   )}
@@ -714,7 +701,7 @@ const App: React.FC = () => {
             className="cta-box"
           >
             <h3>Looking for a Mobile and Web Developer?</h3>
-            <p>I specialize in building high-performance, scalable mobile and web applications that deliver exceptional user experiences. With 11+ years of experience and a track record of success at companies like Boeing, Bluesheets, and Dhani, I can help you:</p>
+            <p>I specialize in building high-performance, scalable mobile and web applications that deliver exceptional user experiences. With 12+ years of experience and a track record of success at companies like Boeing, Bluesheets, and Dhani, I can help you:</p>
             <ul className="cta-features">
               <li>Build cross-platform mobile apps with React Native</li>
               <li>Develop modern web applications with React and TypeScript</li>
@@ -761,7 +748,7 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>&copy; 2024 Aman Shekhar. Crafted with passion and precision.</p>
+          <p>&copy; 2026 Aman Shekhar. Crafted with passion and precision.</p>
         </div>
       </footer>
     </div>
